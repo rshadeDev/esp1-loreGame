@@ -4,6 +4,8 @@ import LoreView from "../components/Lore.vue";
 import JuegoView from "../components/juego/MainView.vue";
 import LogicGame from "../components/juego/LogicGame.vue";
 import Login from "../components/Login.vue";
+import Register from "../components/Register.vue";
+import Records from "../components/Records.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,6 +43,16 @@ const router = createRouter({
       path: "/login",
       name: "login",
       component: Login,
+    },
+    {
+        path: "/register",
+        name: "register",
+        component: Register,
+    },
+    {
+        path: "/records",
+        name: "records",
+        component: Records,
     },
   ],
 });

@@ -32,6 +32,7 @@ const props = defineProps({
 const emit = defineEmits(["select"]);
 
 const handleSelect = () => {
+  console.log("Personaje seleccionado:", props.character.name);
   emit("select", props.character);
 };
 </script>

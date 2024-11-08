@@ -1,27 +1,34 @@
 <template>
     <Header />
-    <div class="login-container">
-        <h2>Iniciar Sesión</h2>
-        <form @submit.prevent="login">
+    <div class="register-container">
+        <h2>Registrarse</h2>
+        <form @submit.prevent="register">
             <label for="username">Nombre de Usuario</label>
             <input v-model="username" type="text" id="username" required />
 
             <label for="password">Contraseña</label>
             <input v-model="password" type="password" id="password" required />
 
-            <button type="submit">Iniciar Sesión</button>
+            <label for="confirmPassword">Confirmar Contraseña</label>
+            <input
+                v-model="confirmPassword"
+                type="password"
+                id="confirmPassword"
+                required
+            />
 
-            <button type="button" @click="goToRegister" class="register-button">
-                Registrarse
-            </button>
+            <button type="submit">Registrarse</button>
 
             <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
+            <p v-if="successMessage" class="success-message">
+                {{ successMessage }}
+            </p>
         </form>
     </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import { useRouter } from "vue-router";
 import Header from "./Header.vue";
 import axios from "axios";
@@ -29,55 +36,41 @@ import axios from "axios";
 const router = useRouter();
 const username = ref("");
 const password = ref("");
+const confirmPassword = ref("");
 const errorMessage = ref("");
+const successMessage = ref("");
 
-const checkSession = async () => {
-    try {
-        const response = await axios.get(
-            "http://localhost:5555/api/check-session",
-            {
-                withCredentials: true,
-            }
-        );
-        if (response.data.loggedIn) {
-            router.push("/game");
-        }
-    } catch (error) {
-        console.error("Error al verificar la sesión:", error);
+const register = async () => {
+    if (password.value !== confirmPassword.value) {
+        errorMessage.value = "Las contraseñas no coinciden";
+        return;
     }
-};
 
-onMounted(() => {
-    checkSession();
-});
-
-const login = async () => {
     try {
         const response = await axios.post(
-            "http://localhost:5555/api/login",
+            "http://localhost:5555/api/register",
             {
                 username: username.value,
                 password: password.value,
-            },
-            { withCredentials: true }
+            }
         );
 
-        if (response.data.message === "Inicio de sesión exitoso") {
-            router.push("/game");
-        }
+        successMessage.value = response.data.message;
+        errorMessage.value = "";
+
+        setTimeout(() => {
+            router.push("/login");
+        }, 1500);
     } catch (error) {
         errorMessage.value =
-            error.response?.data?.message || "Error al iniciar sesión";
+            error.response?.data?.message || "Error al registrarse";
+        successMessage.value = "";
     }
-};
-
-const goToRegister = () => {
-    router.push("/register");
 };
 </script>
 
 <style scoped>
-.login-container {
+.register-container {
     max-width: 400px;
     margin: 5em auto;
     padding: 2.5em;
@@ -91,7 +84,7 @@ const goToRegister = () => {
         box-shadow 0.3s ease;
 }
 
-.login-container:hover {
+.register-container:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
 }
@@ -135,11 +128,12 @@ input:focus {
     background-color: #3a3a3a;
 }
 
-button[type="submit"],
-button.register-button {
+button[type="submit"] {
     padding: 0.8em;
     border: none;
     border-radius: 6px;
+    background-color: #4caf50;
+    color: white;
     font-size: 1em;
     cursor: pointer;
     font-weight: 600;
@@ -149,30 +143,21 @@ button.register-button {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-button[type="submit"] {
-    background-color: #4caf50;
-    color: white;
-}
-
 button[type="submit"]:hover {
     background-color: #45a049;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
-}
-
-button.register-button {
-    background-color: #2196f3;
-    color: white;
-    margin-top: 0.5em;
-}
-
-button.register-button:hover {
-    background-color: #1976d2;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
 }
 
 .error-message {
     margin-top: 1em;
     color: #ff4d4f;
+    font-weight: 600;
+    font-size: 0.95em;
+}
+
+.success-message {
+    margin-top: 1em;
+    color: #4caf50;
     font-weight: 600;
     font-size: 0.95em;
 }

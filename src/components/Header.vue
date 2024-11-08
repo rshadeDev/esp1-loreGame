@@ -3,6 +3,7 @@
         <ul>
             <li><router-link to="/">Home</router-link></li>
             <li><router-link to="/lore">Lore</router-link></li>
+            <li><router-link to="/records">Records</router-link></li>
             <li v-if="isAuthenticated">
                 <router-link to="/game">Game</router-link>
             </li>
