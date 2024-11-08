@@ -60,7 +60,7 @@ const handleSelect = () => {
   left: 0;
   bottom: 0;
   right: 0;
-  height: 500px;
+  height: 450px;
   border-radius: 20px;
   background-size: cover;
   background-position: center;
@@ -71,7 +71,7 @@ const handleSelect = () => {
 }
 
 .card:hover .card-background {
-  transform: scale(1.15) translateZ(0);
+  transform: scale(1.2) translateZ(0);
   background-size: cover;
 }
 
@@ -85,7 +85,7 @@ const handleSelect = () => {
 }
 
 .content {
-  top: 60%;
+  top: 50%;
   left: 0;
   padding: 15px;
   position: absolute;

@@ -31,7 +31,7 @@
                 </div>
             </div>
         </div>
-        <canvas ref="fightArena" width="1200" height="800"></canvas>
+        <canvas ref="fightArena" width="1500" height="1080"></canvas>
     </div>
 </template>
 
@@ -470,7 +470,7 @@ onBeforeUnmount(() => {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 100dvh;
     background: linear-gradient(to right, #1a1a2e, #16213e, #1a1a2e);
     font-family: "Arial", sans-serif;
 }
@@ -479,17 +479,17 @@ onBeforeUnmount(() => {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 30px;
     background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
 }
 
 .health-bars-container {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .player-info {
@@ -500,11 +500,11 @@ onBeforeUnmount(() => {
 }
 
 .player-name {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
     color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    margin-bottom: 5px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
 }
 
 .health-bar-container {
@@ -513,9 +513,9 @@ onBeforeUnmount(() => {
 
 .health-bar {
     width: 100%;
-    height: 20px;
+    height: 25px;
     background-color: #ddd;
-    border-radius: 10px;
+    border-radius: 15px;
     overflow: hidden;
 }
 
@@ -538,10 +538,10 @@ onBeforeUnmount(() => {
     background-color: #f39c12;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 12px 25px;
+    border-radius: 7px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     transition: background-color 0.3s;
 }
 
@@ -553,10 +553,10 @@ onBeforeUnmount(() => {
     background-color: #3498db;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 12px 25px;
+    border-radius: 7px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     transition: background-color 0.3s;
 }
 
@@ -565,7 +565,7 @@ onBeforeUnmount(() => {
 }
 
 canvas {
-    border: 2px solid #fff;
-    border-radius: 10px;
+    border: 3px solid #fff;
+    border-radius: 15px;
 }
 </style>

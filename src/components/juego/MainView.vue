@@ -152,10 +152,11 @@ const startBattle = () => {
 
         router.push("/logic");
     } else {
-        console.error("Ambos jugadores deben estar seleccionados antes de empezar la pelea.");
+        console.error(
+            "Ambos jugadores deben estar seleccionados antes de empezar la pelea."
+        );
     }
 };
-
 </script>
 
 <style scoped>
@@ -166,40 +167,46 @@ const startBattle = () => {
 }
 
 body {
-    height: 100dvh;
-    font-size: 0.9rem;
+    height: 100vh;
+    font-size: 1rem;
     overflow-y: hidden;
+    background-color: #1a1e23;
+    font-family: Arial, sans-serif;
 }
 
 .hero-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100%;
-    background-color: #1a1e23;
-    padding-top: 100px;
+    min-height: 100vh;
+    padding-top: 120px;
+    background: linear-gradient(to bottom, #1a1e23, #23272b);
 }
 
 .title {
     margin-bottom: 3em;
-    color: #fff;
-    font-size: 2rem;
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
 }
 
 .card-container {
     display: flex;
-    gap: 30px;
+    gap: 40px;
     width: fit-content;
-    height: 500px;
+    height: 450px;
     justify-content: center;
+    padding: 0 20px;
 }
 
 .stats-container {
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    margin-top: 20px;
-    color: white;
+    width: 90%;
+    margin-top: 25px;
+    color: #ffffff;
+    font-size: 1.1rem;
 }
 
 .hidden {
@@ -207,78 +214,46 @@ body {
 }
 
 #start-battle-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
+    margin-top: 25px;
+    padding: 12px 25px;
     background-color: #4caf50;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     transition: background-color 0.3s ease;
-}
-
-button {
-    margin-top: 20px;
-    padding: 12px 24px;
-    background: linear-gradient(135deg, #ff5733, #c70039);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.3rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition:
-        background 0.3s ease,
-        transform 0.2s ease;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-button:hover {
-    background: linear-gradient(135deg, #d14b5d, #ff6b5a);
-    transform: scale(1.05);
-}
-
-button:active {
-    background: linear-gradient(135deg, #c70039, #900c3f);
-    transform: scale(0.98);
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 #start-battle-btn:hover {
     background-color: #45a049;
 }
 
-@media (min-width: 768px) {
-    .stats-container {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .title {
-        font-size: 2.5rem;
-    }
-
-    .card-background {
-        height: 400px;
-    }
+button {
+    margin-top: 25px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #ff5733, #c70039);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition:
+        background 0.3s ease,
+        transform 0.2s ease;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-@media (min-width: 1200px) {
-    .title {
-        font-size: 3rem;
-    }
+button:hover {
+    background: linear-gradient(135deg, #d14b5d, #ff6b5a);
+    transform: scale(1.08);
+}
 
-    .card {
-        width: 250px;
-    }
-
-    .card-background {
-        height: 500px;
-    }
-
-    #start-battle-btn {
-        font-size: 1.5rem;
-    }
+button:active {
+    background: linear-gradient(135deg, #c70039, #900c3f);
+    transform: scale(0.98);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
 }
 </style>
